@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
+
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 
@@ -32,6 +33,7 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @PostMapping({"/login"})
+
     public R login(HttpServletRequest request, @RequestBody Employee employee){
         //加密页面传来的密码
         String password = MD5Util.MD5Encode(employee.getPassword(), "UTF-8");
