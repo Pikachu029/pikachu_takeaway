@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 /**
+ * 自动填充公共字段
  * @Author: 橙子
  * @Date: 2022/11/19 21:30
  */

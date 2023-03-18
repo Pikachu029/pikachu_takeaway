@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
 
 /**
  * 登录信息检查拦截器
+ *
  * @Author: 橙子
  * @Date: 2022/11/18 14:43
  */
@@ -60,10 +61,10 @@ public class LoginCheckFilter implements Filter {
             return;
         }
         //没有登录给前端返回数据
-        log.info("afds{}",check);
+        log.info("afds{}", check);
         response.getWriter().write(JSON.toJSONString(R.error("NOTLOGIN")));
         log.info("用户未登录");
-        log.info("路径{}" ,requestURI);
+        log.info("路径{}", requestURI);
         return;
     }
 

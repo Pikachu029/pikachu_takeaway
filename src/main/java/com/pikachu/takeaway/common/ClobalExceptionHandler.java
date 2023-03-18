@@ -17,6 +17,8 @@ import java.sql.SQLIntegrityConstraintViolationException;
  */
 @Slf4j
 @ResponseBody
+//指定拦截的注解
+//拦截类上面加了RestController和Controller注解的异常
 @ControllerAdvice(annotations = {RestController.class, Controller.class})
 public class ClobalExceptionHandler {
 

@@ -33,7 +33,6 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @PostMapping({"/login"})
-
     public R login(HttpServletRequest request, @RequestBody Employee employee){
         //加密页面传来的密码
         String password = MD5Util.MD5Encode(employee.getPassword(), "UTF-8");
@@ -86,6 +85,7 @@ public class EmployeeController {
         employee.setUpdateUser(createId);*/
 
         //前端传来的账号信息进行保存
+        //employee是唯一的，如果重复全局异常处理器会进行错误提示
         employeeService.save(employee);
 
         return R.success("新增员工成功");
