@@ -30,6 +30,11 @@ public class Commoncontroller {
     @Value("${pikachu.path}")//application.propertise中进行配置
     private String basePath;
 
+    /**
+     * 上传图片
+     * @param file
+     * @return
+     */
     @PostMapping("/upload")
     public R<String> upload(MultipartFile file) {//file是一个临时文件，需要把他转存到其他位置
 
@@ -38,7 +43,7 @@ public class Commoncontroller {
         //截取文件名"."后的后缀
         String substring = filename.substring(filename.lastIndexOf("."));
 
-        //使用UUID重新生成文件名，以确保文件不被同名文件覆盖，并加啥截取到的原文件的后缀
+        //使用UUID重新生成文件名，以确保文件不被同名文件覆盖，并加上截取到的原文件的后缀
         String uuid = UUID.randomUUID().toString() + substring;
 
         //如果配置的目录文件不存在则新建一个目录
@@ -58,6 +63,11 @@ public class Commoncontroller {
         return R.success(uuid);
     }
 
+    /**
+     * 下载图片进行回显
+     * @param name
+     * @param response
+     */
     @GetMapping("/download")
     public void dowmload(String name, HttpServletResponse response) {
 

@@ -17,6 +17,8 @@ import java.lang.invoke.LambdaMetafactory;
 import java.util.List;
 
 /**
+ * 分类管理
+ *
  * @Author: 橙子
  * @Date: 2022/11/19 22:54
  */
@@ -28,9 +30,16 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    /**
+     * 分页查询
+     *
+     * @param page
+     * @param pageSize
+     * @return
+     */
     @GetMapping({"/page"})
-    public R<Page> page(int page, int pageSize){
-        log.info("pafe = {},pageSize = {},name = {}",page);
+    public R<Page> page(int page, int pageSize) {
+        log.info("pafe = {},pageSize = {},name = {}", page);
 
         //构建分页构造器
         Page<Category> page1 = new Page(page, pageSize);
@@ -38,48 +47,53 @@ public class CategoryController {
         LambdaQueryWrapper<Category> queryWrapper = new LambdaQueryWrapper<>();
         //queryWrapper.like(StringUtils.isNotEmpty(name),Category::getName,name);
         queryWrapper.orderByDesc(Category::getSort);
-
-        categoryService.page(page1,queryWrapper);
+        //分页查询
+        categoryService.page(page1, queryWrapper);
 
         return R.success(page1);
     }
 
-
+    /**
+     * 新增分类
+     * @param category
+     * @return
+     */
     @PostMapping
-    public R<String> save(@RequestBody Category category){
+    public R<String> save(@RequestBody Category category) {
 
         categoryService.save(category);
         return R.success("新增分类成功");
     }
 
     /**
-     *
+     * 根据id删除分类
      * @param ids
      * @return
      */
     @DeleteMapping
-    public R<String> delete(Long ids){
-        log.info("id{}",ids);
+    public R<String> delete(Long ids) {
+        log.info("id{}", ids);
         categoryService.removeById(ids);
         return R.success("删除成功");
     }
 
+    //根据id修改分类信息
     @PutMapping
-    public R<String> update(@RequestBody Category category){
+    public R<String> update(@RequestBody Category category) {
         categoryService.updateById(category);
         return R.success("成功修改");
     }
 
 
     /**
-     *
+     * 根据条件查询分类数据
      * @param category
      * @return
      */
     @GetMapping({"/list"})
-    public R<List<Category>> List(Category category){
+    public R<List<Category>> List(Category category) {
         LambdaQueryWrapper<Category> q = new LambdaQueryWrapper<>();
-        q.eq(category.getType() != null,Category::getType,category.getType());
+        q.eq(category.getType() != null, Category::getType, category.getType());
         q.orderByAsc(Category::getSort).orderByAsc(Category::getUpdateTime);
         List<Category> list = categoryService.list(q);
         return R.success(list);
