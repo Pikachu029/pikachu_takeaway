@@ -1,3 +1,4 @@
+/*
 package com.pikachu.takeaway.filter;
 
 
@@ -17,12 +18,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
+*/
 /**
  * 登录信息检查拦截器
  *
  * @Author: 橙子
  * @Date: 2022/11/18 14:43
- */
+ *//*
+
 @Slf4j
 @WebFilter(filterName = "logincheckfilter", urlPatterns = "/*")//拦截的url
 public class LoginCheckFilter implements Filter {
@@ -68,13 +71,15 @@ public class LoginCheckFilter implements Filter {
         return;
     }
 
-    /**
+    */
+/**
      * 路径匹配，检查本次url是否放行
      *
      * @param uls
      * @param requesturl
      * @return
-     */
+     *//*
+
     public boolean check(String[] uls, String requesturl) {
         for (String url : uls) {
             boolean match = PATH_MATCHER.match(url, requesturl);
@@ -87,3 +92,4 @@ public class LoginCheckFilter implements Filter {
 
 
 }
+*/
