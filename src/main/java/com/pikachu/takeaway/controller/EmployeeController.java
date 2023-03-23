@@ -9,6 +9,7 @@ import com.pikachu.takeaway.service.EmployeeService;
 import com.pikachu.takeaway.service.serviceimpl.EmployrrServiceImpl;
 import com.pikachu.takeaway.util.BaseContext;
 import com.pikachu.takeaway.util.MD5Util;
+import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.apache.commons.lang.StringUtils;
@@ -21,12 +22,15 @@ import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 
 /**
+ * 员工管理
+ *
  * @Author: 橙子
  * @Date: 2022/11/17 15:54
  */
 @Slf4j
 @RestController
 @RequestMapping({"/employee"})
+@Api(value = "员工管理")
 public class EmployeeController {
 
     @Autowired
